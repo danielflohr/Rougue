@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.params=
+comment0.target=Controller()
+comment1.params=gui
+comment1.target=void\ setGUI(RougueGUI)
+comment2.params=
+comment2.target=void\ makeMoves()
+numComments=3
