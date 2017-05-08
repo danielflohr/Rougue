@@ -9,20 +9,17 @@ import java.util.*;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Projectile implements Model
+public class Projectile extends Model
 {
-    public Projectile()
+	private int x,y,dir;
+    public Projectile(int xPos, int yPos,int direction)
     {
-        
+        super(xPos,yPos);
+        dir = direction;
     }
     
-    public void move()
+    public int move()
     {
-        
-    }
-    
-    public void getLocation()
-    {
-        
+        return -1;
     }
 }

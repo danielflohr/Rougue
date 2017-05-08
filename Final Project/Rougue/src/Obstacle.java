@@ -9,13 +9,16 @@ import java.util.*;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public interface Obstacle extends Model
+public class Obstacle extends Model
 {
-    /**
-     * An example of a method header - replace this comment with your own
-     * 
-     * @param  y    a sample parameter for a method
-     * @return        the result produced by sampleMethod 
-     */
-    int sampleMethod(int y);
+	private int x,y;
+	public Obstacle(int xPos, int yPos)
+    {
+        super(xPos,yPos);
+    }
+    
+    public int move()
+    {
+        return -1;
+    }
 }

@@ -1,7 +1,9 @@
 import java.awt.*;
 import java.awt.event.*;
+
 import javax.swing.*;
 import javax.swing.event.*;
+
 import java.util.*;
 /**
  * Write a description of class GUI here.
@@ -12,49 +14,117 @@ import java.util.*;
 public class RougueGUI extends JFrame
 {
     private Controller myController;
-    private Image fish;
-
+    private JPanel grid, top, bottom;
+    private Model[][] map;
     /**
      * Constructor for objects of class GUI
      */
     public RougueGUI(Controller control)
     {
-    	ImageIcon fishIcon = new ImageIcon("fish.gif");
-        fish = fishIcon.getImage();
-
-        int load = fishIcon.getImageLoadStatus();
-        System.out.println("fish load " + load);
         myController = control;
-        setSize(400, 170);
+        grid = new JPanel();
+        top = new JPanel();
+        bottom = new JPanel();
+        map = genMap(20,20);
+        grid.setLayout(new GridLayout(5,10));
+        setFocusable(true);
+        requestFocusInWindow();
+        addKeyListener(new KeyHandler());
+        for(int a = 0; a< ((GridLayout)grid.getLayout()).getRows(); a++)
+        {
+        	for(int b = 0; b< ((GridLayout)grid.getLayout()).getColumns(); b++)
+        	{
+        		grid.add(new Block(map[a][b]));
+        	}        
+        }
+        setLayout(new BorderLayout());
+        add(top, BorderLayout.NORTH);
+        add(grid, BorderLayout.CENTER);
+        add(bottom, BorderLayout.SOUTH);
+        setSize(800, 400);
         setVisible(true);
+        System.out.println(getGridSpot(3,5));
     }
-    
-    public void getModelList()
+    public Block getGridSpot(int yPos, int xPos)
     {
-        
+        return (Block) grid.getComponent(yPos*10+xPos);
     }
     
-    public void paint (Graphics g)
+    public JPanel getGrid()
     {
-        // call superclass's paint method
-        super.paint(g);
-
-        // draw a red line; 2 blue rectangles, one filled and one
-        // not; and 2 magenta ovals, one filled and one not
-
-        g.setColor(Color.red);
-        g.drawLine(5, 30, 350, 30);
-
-        g.setColor(Color.blue);
-        g.drawRect(5, 40, 90, 55);
-        g.fillRect(100, 40, 90, 55);
-
-        g.setColor(Color.magenta);
-        g.drawOval(195, 100, 90, 55);
-        g.fillOval(290, 100, 90, 55);
-
-        // location of fish changes each time the timer goes off
-        g.drawImage(fish, 300, 40, this);	// 'fish' was loaded in constructor
+    	return grid;
     }
     
+    public int getRows()
+    {
+    	return ((GridLayout)grid.getLayout()).getRows();
+    }
+    
+    public int getCols()
+    {
+    	return ((GridLayout)grid.getLayout()).getColumns();
+    }
+    
+    public Model[][] genMap(int width, int height)
+    {
+    	Model[][] myMap = new Model[height][width];
+    	for(int a = 0; a < height; a++)
+    	{
+    		for(int b = 0; b< width; b++)
+    		{
+    	    	if((int)(Math.random() * 5) == 0)
+    	    	{
+    	    		myMap[a][b] = new Enemy(a,b);
+    	    	}
+    	    	else if((int)(Math.random() * 4) == 0)
+    	    	{
+    	    		myMap[a][b] = new Obstacle(a,b);
+    	    		
+    	    	}
+    	    	else if((int)(Math.random() * 3) == 0)
+    	    	{
+    	    		myMap[a][b] = new Enemy(a,b);
+    	    	}
+    	    	else
+    	    	{
+    	    		myMap[a][b] = new Model(a,b);
+    	    	}
+    		}
+    	}
+    	myMap[3][5] = new Player(3,5);
+    	return myMap;
+    }
+    
+    private class KeyHandler implements KeyListener {
+	    
+	    public void keyPressed ( KeyEvent event )
+	    {
+	    	
+	    }
+	    
+	    public void keyReleased (KeyEvent event)
+	    {
+	        if(event.getKeyCode() == KeyEvent.VK_UP)
+	        {
+	        	myController.makeMoves(1, map, new Integer(getGridSpot(0,0).getY()), new Integer(getGridSpot(0,0).getX()));
+	        }
+	        else if(event.getKeyCode() == KeyEvent.VK_DOWN)
+	        {
+	        	myController.makeMoves(3, map, new Integer(getGridSpot(0,0).getY()), new Integer(getGridSpot(0,0).getX()));
+	        }
+	        else if(event.getKeyCode() == KeyEvent.VK_LEFT)
+	        {
+	        	myController.makeMoves(2, map, new Integer(getGridSpot(0,0).getY()), new Integer(getGridSpot(0,0).getX()));
+	        }
+	        else if(event.getKeyCode() == KeyEvent.VK_RIGHT)
+	        {
+	        	myController.makeMoves(0, map, new Integer(getGridSpot(0,0).getY()), new Integer(getGridSpot(0,0).getX()));
+	        }
+	    }
+	    
+	    public void keyTyped (KeyEvent event )
+	    {
+	    	
+	    }
+	}
 }

@@ -9,7 +9,18 @@ import java.util.*;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public interface Enemy extends Model
+public class Enemy extends Model
 {
+	private int x,y;
+	private boolean colidable;
+	public Enemy(int xPos, int yPos)
+    {
+        super(xPos,yPos);
+        colidable = true;
+    }
     
+    public int move()
+    {
+        return -1;
+    }
 }

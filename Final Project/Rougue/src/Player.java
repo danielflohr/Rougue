@@ -9,33 +9,22 @@ import java.util.*;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Player implements Model
+public class Player extends Model
 {
-    public Player()
+	private int x,y;
+	private boolean colidable;
+    public Player(int xPos,int yPos)
     {
-    	ImageIcon fishIcon = new ImageIcon("fish.gif");
-        fish = fishIcon.getImage();
-
-        int load = fishIcon.getImageLoadStatus();
-        System.out.println("fish load " + load);
+    	super(xPos,yPos);
+    	colidable = true;
     }
     
-    public void move()
+    public int move()
     {
-        
+        return -1;
     }
     
     public void attack()
-    {
-        
-    }
-    
-    public void hasColided()
-    {
-        
-    }
-    
-    public void getLocation()
     {
         
     }

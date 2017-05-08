@@ -11,7 +11,7 @@ import java.util.*;
  */
 public class Room
 {
-    //handle colitions
+    //probably wont need this
     public Room()
     {
         

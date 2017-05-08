@@ -9,9 +9,37 @@ import java.util.*;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public interface Model
+public class Model
 {
-    public void move();
+	private int x,y;
+	private boolean colidable;
+	public Model(int xPos, int yPos)
+	{
+		x = xPos;
+		y = yPos;
+		colidable = false;
+	}
+	
+    public int move()
+    {
+    	return -1;
+    }
     
-    public void getLocation();
+    public int getX()
+    {
+    	return x;
+    }
+    
+    public int getY()
+    {
+    	return y;
+    }
+    public boolean isColidable()
+    {
+    	return colidable;
+    }
+    public Icon getImg()
+    {
+    	return null;
+    }
 }
