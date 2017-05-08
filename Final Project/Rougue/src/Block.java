@@ -13,6 +13,4 @@ public class Block extends JLabel
 	{
 		super(m.getX()+" "+m.getY());
 	}
-	
-	
 }

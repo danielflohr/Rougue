@@ -49,7 +49,6 @@ public class RougueGUI extends JFrame
     {
         return (Block) grid.getComponent(yPos*10+xPos);
     }
-    
     public JPanel getGrid()
     {
     	return grid;

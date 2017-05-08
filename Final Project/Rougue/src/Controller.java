@@ -90,45 +90,45 @@ public class Controller
 	        			}
 	        			break;
 	        		case 1:
-	        			if(!map[y+row][x+col+1].isColidable())
+	        			if(!map[y+row-1][x+col+1].isColidable())
 	        			{
-	        				map[y+row][x+col+1] = map[y+row][x+col];
+	        				map[y+row-1][x+col+1] = map[y+row][x+col];
 	        			}
 	        			break;
 	        		case 2:
-	        			if(!map[y+row][x+col+1].isColidable())
+	        			if(!map[y+row-1][x+col].isColidable())
 	        			{
-	        				map[y+row][x+col+1] = map[y+row][x+col];
+	        				map[y+row-1][x+col] = map[y+row][x+col];
 	        			}
 	        			break;
 	        		case 3:
-	        			if(!map[y+row][x+col+1].isColidable())
+	        			if(!map[y+row-1][x+col-1].isColidable())
 	        			{
-	        				map[y+row][x+col+1] = map[y+row][x+col];
+	        				map[y+row-1][x+col-1] = map[y+row][x+col];
 	        			}
 	        			break;
 	        		case 4:
-	        			if(!map[y+row][x+col+1].isColidable())
+	        			if(!map[y+row][x+col-1].isColidable())
 	        			{
-	        				map[y+row][x+col+1] = map[y+row][x+col];
+	        				map[y+row][x+col-1] = map[y+row][x+col];
 	        			}
 	        			break;
 	        		case 5:
-	        			if(!map[y+row][x+col+1].isColidable())
+	        			if(!map[y+row+1][x+col-1].isColidable())
 	        			{
-	        				map[y+row][x+col+1] = map[y+row][x+col];
+	        				map[y+row+1][x+col-1] = map[y+row][x+col];
 	        			}
 	        			break;
 	        		case 6:
-	        			if(!map[y+row][x+col+1].isColidable())
+	        			if(!map[y+row+1][x+col].isColidable())
 	        			{
-	        				map[y+row][x+col+1] = map[y+row][x+col];
+	        				map[y+row+1][x+col] = map[y+row][x+col];
 	        			}
 	        			break;
 	        		case 7:
-	        			if(!map[y+row][x+col+1].isColidable())
+	        			if(!map[y+row+1][x+col+1].isColidable())
 	        			{
-	        				map[y+row][x+col+1] = map[y+row][x+col];
+	        				map[y+row+1][x+col+1] = map[y+row][x+col];
 	        			}
 	        			break;
         		}
